@@ -90,12 +90,35 @@ ls -l
 Example:
 
 ```text
-drwxr-xr-x  has
+drwxr-xr-x has
 -rw-r--r-- package.json
 ```
 
 - `d` indicates a **directory**
 - `-` indicates a **file**
+
+### `ls -a`
+
+**List All**
+
+Displays all files and folders, including hidden files.
+
+```bash
+ls -a
+```
+
+Example:
+
+```text
+.
+..
+.gitignore
+index.html
+images
+styles.css
+```
+
+> Hidden files begin with a period (`.`).
 
 ### `ls --help`
 
@@ -105,20 +128,7 @@ Displays the help menu for the `ls` command.
 ls --help
 ```
 
-The help menu explains:
-
-- What the command does
-- Available flags
-- Command syntax
-- Usage examples
-
-> **Tip:** Many Linux commands support the `--help` flag.
-
-Example:
-
-```bash
-command --help
-```
+Many Linux commands support the `--help` flag to display documentation and available options.
 
 ---
 
@@ -126,7 +136,7 @@ command --help
 
 **Change Directory**
 
-Moves from the current directory into another directory.
+Moves into another directory.
 
 ```bash
 cd <folder_name>
@@ -214,9 +224,17 @@ Example:
 mkdir website
 ```
 
-This creates a new folder named `website`.
+A **directory** and a **folder** mean the same thing.
 
-> **Note:** A **directory** and a **folder** are the same thing.
+You can also create nested directories using a path.
+
+Example:
+
+```bash
+mkdir client/src
+```
+
+This creates a `src` folder inside the `client` folder.
 
 ---
 
@@ -234,14 +252,108 @@ Example:
 touch index.html
 ```
 
-This creates an empty file named `index.html`.
-
-You can also create multiple files at once.
+You can create multiple files at once.
 
 Example:
 
 ```bash
 touch index.html styles.css script.js
+```
+
+---
+
+## `cp`
+
+**Copy**
+
+Copies a file or directory.
+
+```bash
+cp <source> <destination>
+```
+
+Example:
+
+```bash
+cp background.jpg images/
+```
+
+The original file remains in its original location.
+
+---
+
+## `mv`
+
+**Move**
+
+Moves or renames a file or directory.
+
+### Rename a file
+
+```bash
+mv <old_filename> <new_filename>
+```
+
+Example:
+
+```bash
+mv roboto.font roboto.woff
+```
+
+### Move a file
+
+```bash
+mv logo.png images/
+```
+
+The `mv` command can:
+
+- Rename files
+- Rename directories
+- Move files
+- Move directories
+
+---
+
+## `rm`
+
+**Remove**
+
+Deletes a file.
+
+```bash
+rm <filename>
+```
+
+Example:
+
+```bash
+rm background.jpg
+```
+
+> **Warning:** `rm` permanently removes files. They are not moved to the Recycle Bin or Trash.
+
+---
+
+## `find`
+
+Searches for files and directories.
+
+Running `find` without any arguments displays the directory tree.
+
+```bash
+find
+```
+
+Example:
+
+```text
+.
+./client
+./client/src
+./images
+./images/background.jpg
+./index.html
 ```
 
 ---
@@ -298,7 +410,7 @@ script.sh
 
 Folders are typically displayed in a different color than files.
 
-Files usually include a file extension, such as:
+Files usually include an extension, such as:
 
 ```text
 README.md
@@ -310,27 +422,85 @@ Directories generally do not have file extensions.
 
 ---
 
+# Working with Paths
+
+Many commands accept a **path** instead of just a filename.
+
+Example:
+
+```bash
+mkdir client/src
+```
+
+Creates a `src` directory inside the `client` directory.
+
+Another example:
+
+```bash
+cp logo.png images/
+```
+
+Copies `logo.png` into the `images` folder.
+
+---
+
 # Creating Files and Directories
 
-A common workflow for starting a website project is:
+A common workflow for starting a website project:
 
 ```bash
 mkdir website
 cd website
 touch index.html
+mkdir images
 ```
 
 This will:
 
-1. Create a folder named `website`
-2. Move into the folder
-3. Create an empty `index.html` file
+1. Create a `website` folder.
+2. Move into it.
+3. Create an `index.html` file.
+4. Create an `images` folder.
+
+---
+
+# Common File Management Workflow
+
+Copy a file:
+
+```bash
+cp background.jpg images/
+```
+
+Delete the original:
+
+```bash
+rm background.jpg
+```
+
+Rename a file:
+
+```bash
+mv roboto.font roboto.woff
+```
+
+Display the project tree:
+
+```bash
+find
+```
+
+Create a nested directory:
+
+```bash
+mkdir client/src
+```
 
 ---
 
 # Hidden Files
 
-Some files are **hidden** by default because their names begin with a period (`.`).
+Some files are hidden because their names begin with a period (`.`).
 
 Example:
 
@@ -338,17 +508,25 @@ Example:
 .gitignore
 ```
 
-Hidden files often store configuration or settings for programs.
+Hidden files usually contain configuration settings.
 
 By default, `ls` does **not** display hidden files.
+
+Use:
+
+```bash
+ls -a
+```
+
+to display them.
 
 ---
 
 # Command Flags
 
-A **flag** modifies how a command behaves.
+A **flag** changes how a command behaves.
 
-Flags are usually added after a command using a hyphen (`-`).
+Flags are usually added after the command.
 
 Examples:
 
@@ -357,10 +535,14 @@ ls -l
 ```
 
 ```bash
+ls -a
+```
+
+```bash
 ls --help
 ```
 
-Many Linux commands support flags to change their behavior or display additional information.
+Many Linux commands support flags to provide additional functionality.
 
 ---
 
@@ -368,7 +550,7 @@ Many Linux commands support flags to change their behavior or display additional
 
 ## Terminal
 
-A program that allows you to interact with the operating system using text commands.
+A program used to interact with the operating system using text commands.
 
 ## Command Line Interface (CLI)
 
@@ -388,11 +570,18 @@ The directory you are currently using.
 
 ## Path
 
-The complete location of a file or directory within the file system.
+The location of a file or directory within the file system.
+
+Examples:
+
+```text
+client/src
+images/background.jpg
+```
 
 ## Prompt
 
-The text shown before your cursor that indicates the current directory and is ready to accept commands.
+The text displayed before your cursor indicating the current directory.
 
 ## File
 
@@ -400,7 +589,7 @@ A document or piece of data stored on your computer.
 
 ## File Extension
 
-The letters after a period in a filename that identify the file type.
+The letters after the period in a filename that identify the file type.
 
 Examples:
 
@@ -412,7 +601,7 @@ script.sh
 
 ## Hidden File
 
-A file whose name begins with a period (`.`), making it hidden from normal directory listings.
+A file whose name begins with a period (`.`).
 
 Example:
 
@@ -420,17 +609,39 @@ Example:
 .gitignore
 ```
 
+## Source
+
+The original file being copied or moved.
+
+Example:
+
+```bash
+cp background.jpg images/
+```
+
+`background.jpg` is the source.
+
+## Destination
+
+The location where a copied or moved file will be placed.
+
+Example:
+
+```bash
+cp background.jpg images/
+```
+
+`images/` is the destination.
+
 ## Command Flag
 
-An option added to a command that changes how the command works.
+An option added to a command to modify its behavior.
 
 Examples:
 
 ```bash
 ls -l
-```
-
-```bash
+ls -a
 ls --help
 ```
 
@@ -440,7 +651,7 @@ ls --help
 
 The standard language used to create web pages.
 
-The main page of a website is commonly named:
+The main page of most websites is named:
 
 ```text
 index.html
@@ -456,11 +667,16 @@ index.html
 | `pwd` | Print the current working directory |
 | `ls` | List files and folders |
 | `ls -l` | List files and folders in long list format |
+| `ls -a` | List all files and folders, including hidden files |
 | `ls --help` | Display help information for the `ls` command |
 | `cd` | Change directories |
 | `cd ..` | Move to the parent directory |
 | `cd ../..` | Move up two directory levels |
 | `mkdir` | Create a new directory |
 | `touch` | Create a new empty file |
+| `cp` | Copy files or directories |
+| `mv` | Move or rename files and directories |
+| `rm` | Remove files |
+| `find` | Display or search the directory tree |
 | `more` | Display the contents of a file |
 | `clear` | Clear the terminal screen |
